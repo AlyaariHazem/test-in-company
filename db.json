@@ -15,23 +15,18 @@
     },
     {
       "id": "2",
-      "name": "Hazem",
-      "description": "yes"
+      "name": "IT",
+      "description": "information tecnology"
     },
     {
       "id": "1041",
-      "name": "testtestssssssssss",
-      "description": "testtestt"
+      "name": "cs",
+      "description": "compotr sience"
     },
     {
       "id": "24b4",
-      "name": "Hazem",
-      "description": "yestestte"
-    },
-    {
-      "id": "5292",
-      "name": "Hazemtesttestsesssssss",
-      "description": "yessssssssssss"
+      "name": "IS",
+      "description": "information system"
     }
   ],
   "employees": [

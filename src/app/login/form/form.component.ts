@@ -47,7 +47,7 @@ export class FormComponent {
       this.form.markAllAsTouched();
       return;
     }
-    
+  
     const { username, pass } = this.form.value;
     this.auth.login(username!, pass!).subscribe({
       next: () => {

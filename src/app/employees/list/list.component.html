@@ -1,5 +1,6 @@
-<!-- 1) شريط الأدوات -->
-<div class="action-bar">
+<p-confirmDialog></p-confirmDialog>
+
+<div class="action-bar m-3 ">
     <div class="mb-3 flex gap-2 align-items-center">
         <!-- زر الإضافة -->
         <button pButton type="button" icon="pi pi-plus" label="إضافة موظف"
@@ -11,7 +12,7 @@
             (click)="exportExcel()"></button>
     </div>
 
-
+    
     <p-table [value]="pagedEmployees" dataKey="id" class="w-full">
         <ng-template pTemplate="header">
             <tr>
@@ -30,7 +31,7 @@
                 <td>{{ e.id }}</td>
                 <td>{{ e.fullName }}</td>
                 <td>{{ e.email }}</td>
-                <td>{{ e.department?.name }}</td>
+                <td>{{ e.department?.name || "can't find the Name!" }}</td>
                 <td>{{ e.joiningDate }}</td>
                 <td>
                     <span class="status-chip" [ngClass]="e.status">

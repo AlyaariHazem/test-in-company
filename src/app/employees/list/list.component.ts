@@ -55,7 +55,7 @@ export class ListComponent {
       this.updatePagedEmployees(); // تحديث الصفحة المعروضة
     });
   }
-  
+
   openDialog(emp?: Employee) {
     const init = emp ?? { departmentId: this.depId } as Employee;
 
@@ -77,19 +77,22 @@ export class ListComponent {
         });
       });
   }
-
-  confirmDelete(emp: Employee) {
+  //why is the
+  confirmDelete(emp?: Employee) {
+    debugger
+    console.log('the employee to delete', emp);
     this.confirm.confirm({
-      message: `حذف الموظف «${emp.fullName}»؟`,
+      message: `حذف الموظف «${emp!.fullName}»؟`,
       header: 'تأكيد الحذف',
       icon: 'pi pi-exclamation-triangle',
       acceptLabel: 'حذف',
       rejectLabel: 'إلغاء',
       accept: () => {
-        this.srv.delete(emp.id!).subscribe({
+        this.srv.delete(emp!.id!).subscribe({
           next: () => {
             this.toast.success('تم الحذف');
-            this.employees = this.employees.filter(e => e.id !== emp.id);
+            this.employees = this.employees.filter(e => e.id !== emp!.id);
+            this.load();
           },
           error: () => this.toast.error('فشل الحذف')
         });
