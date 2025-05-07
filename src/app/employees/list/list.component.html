@@ -1,0 +1,52 @@
+<!-- 1) شريط الأدوات -->
+<div class="action-bar">
+    <div class="mb-3 flex gap-2 align-items-center">
+        <!-- زر الإضافة -->
+        <button pButton type="button" icon="pi pi-plus" label="إضافة موظف"
+            class="p-button-raised p-button-primary excel" pTooltip="أضف موظف جديد" (click)="openDialog()"></button>
+
+        <!-- زر التصدير -->
+        <button pButton type="button" icon="pi pi-file-excel" label="تصدير Excel"
+            class="p-button-raised p-button-success " pTooltip="تصدير قائمة الموظفين إلى ملف Excel"
+            (click)="exportExcel()"></button>
+    </div>
+
+
+    <p-table [value]="pagedEmployees" dataKey="id" class="w-full">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>المعرف</th>
+                <th>الاسم</th>
+                <th>البريد</th>
+                <th>القسم</th>
+                <th>تاريخ الانضمام</th>
+                <th>الحالة</th>
+                <th style="width:120px">العمليات</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-e>
+            <tr>
+                <td>{{ e.id }}</td>
+                <td>{{ e.fullName }}</td>
+                <td>{{ e.email }}</td>
+                <td>{{ e.department?.name }}</td>
+                <td>{{ e.joiningDate }}</td>
+                <td>
+                    <span class="status-chip" [ngClass]="e.status">
+                        {{ e.status === 'active' ? 'نشط' : 'غير نشط' }}
+                    </span>
+                </td>
+                <td>
+                    <button pButton icon="pi pi-pencil" class="p-button-text text-primary"
+                        (click)="openDialog(e)"></button>
+                    <button pButton icon="pi pi-trash" class="p-button-text p-button-danger"
+                        (click)="confirmDelete(e)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-paginator dir="ltr" [first]="first" [rows]="rows" [totalRecords]="employees.length"
+        [rowsPerPageOptions]="[4, 10, 20]" (onPageChange)="onPageChange($event)">
+    </p-paginator>

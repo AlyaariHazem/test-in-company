@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "primeicons/primeicons.css";
+
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+//this is the font I use
+*:not(i):not(span):not(.mat-icon) {
+  font-family: "Noto Kufi Arabic", sans-serif !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+:root {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+@import "ngx-toastr/toastr";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@400;700&display=swap");

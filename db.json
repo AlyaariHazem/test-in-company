@@ -1,0 +1,79 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123",
+      "token": "mock-jwt-token"
+    }
+  ],
+  "departments": [
+    {
+      "id": "1",
+      "name": "HR",
+      "description": "Handles people."
+    },
+    {
+      "id": "2",
+      "name": "Hazem",
+      "description": "yes"
+    },
+    {
+      "id": "1041",
+      "name": "testtestssssssssss",
+      "description": "testtestt"
+    },
+    {
+      "id": "24b4",
+      "name": "Hazem",
+      "description": "yestestte"
+    },
+    {
+      "id": "5292",
+      "name": "Hazemtesttestsesssssss",
+      "description": "yessssssssssss"
+    }
+  ],
+  "employees": [
+    {
+      "id": "1",
+      "fullName": "Ahmed Alawia",
+      "email": "ahmed@example.com",
+      "joiningDate": "2024-02-01",
+      "departmentId": "1",
+      "status": "active"
+    },
+    {
+      "id": "2",
+      "fullName": "Hazem",
+      "email": "Hazem@gmail.com",
+      "joiningDate": "2025-02-01",
+      "departmentId": 1,
+      "status": "active"
+    },
+    {
+      "id": "3",
+      "fullName": "Fahem",
+      "email": "Fa@gmail.com",
+      "joiningDate": "2025-01-01",
+      "departmentId": "2",
+      "status": "active"
+    },
+    {
+      "id": "4",
+      "fullName": "Ali",
+      "email": "Ali@gmail.com",
+      "joiningDate": "2025-12-31",
+      "departmentId": 2,
+      "status": "active"
+    },
+    {
+      "id": "5",
+      "fullName": "test",
+      "email": "testtest@gmil.com",
+      "joiningDate": "2025-02-01",
+      "departmentId": "24b4",
+      "status": "active"
+    }
+  ]
+}

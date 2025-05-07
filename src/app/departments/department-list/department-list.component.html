@@ -1,0 +1,33 @@
+<p-confirmDialog></p-confirmDialog>
+
+<button pButton type="button" icon="pi pi-plus" label="إضافة قسم" class="mb-2" (click)="openDialog()"></button>
+
+<p-table [value]="departments" dataKey="id">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>المعرف</th>
+            <th>الاسم</th>
+            <th>الوصف</th>
+            <th>الموظفون</th>
+            <th style="width:120px">العمليات</th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-d>
+        <tr>
+            <td>{{ d.id }}</td>
+            <td>{{ d.name }}</td>
+            <td>{{ d.description }}</td>
+            <td>
+                <button pButton label="الموظفون" class="p-button-text"
+                        [routerLink]="['/departments', d.id, 'employees']">
+                </button>
+              </td>
+            <td>
+                <button pButton icon="pi pi-pencil" class="p-button-text text-white" (click)="openDialog(d)"></button>
+                <button pButton icon="pi pi-trash" class="p-button-text p-button-danger"
+                    (click)="confirmDelete(d)"></button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>

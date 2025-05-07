@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>{{ data ? 'تعديل موظف' : 'إضافة موظف' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()" mat-dialog-content>
+    <!-- الاسم الكامل -->
+    <mat-form-field class="w-100">
+        <mat-label>الاسم الكامل</mat-label>
+        <input matInput formControlName="fullName" />
+        <mat-error *ngIf="form.get('fullName')?.hasError('required')">مطلوب</mat-error>
+    </mat-form-field>
+
+    <!-- البريد -->
+    <mat-form-field class="w-100">
+        <mat-label>البريد الإلكتروني</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error *ngIf="form.get('email')?.hasError('required')">مطلوب</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">غير صالح</mat-error>
+    </mat-form-field>
+
+    <!-- تاريخ الانضمام -->
+    <mat-form-field class="w-100">
+        <mat-label>تاريخ الانضمام</mat-label>
+        <input matInput type="date" formControlName="joiningDate" />
+    </mat-form-field>
+
+    <!-- القسم (PrimeNG Dropdown) -->
+    <p-dropdown class="w-100 mb-3" [options]="departments" optionLabel="name" optionValue="id" placeholder="اختر القسم"
+        formControlName="departmentId">
+    </p-dropdown>
+    <div class="text-danger" *ngIf="form.get('departmentId')?.invalid && form.touched">
+        القسم مطلوب
+    </div>
+
+    <!-- الحالة -->
+    <mat-form-field class="w-100">
+        <mat-label>الحالة</mat-label>
+        <mat-select formControlName="status">
+            <mat-option value="active">نشط</mat-option>
+            <mat-option value="inactive">غير نشط</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!-- أزرار -->
+    <div mat-dialog-actions align="end">
+        <button mat-button type="button" (click)="dialog.close()">إلغاء</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+            حفظ
+        </button>
+    </div>
+</form>

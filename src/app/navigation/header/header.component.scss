@@ -1,0 +1,26 @@
+:host {
+    width: 100%;
+  }
+  
+  .flex-spacer {
+    flex: 1 1 auto;
+  }
+  
+  .app-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-inline-start: 0.5rem;   /* RTL-aware */
+  }
+  
+  a[mat-button] {
+    font-weight: 600;
+  }
+  
+  .active-link {
+    background: rgba(255,255,255,.18);
+  }
+  
+  .user-btn {
+    margin-inline-start: 0.25rem;
+  }
+  
