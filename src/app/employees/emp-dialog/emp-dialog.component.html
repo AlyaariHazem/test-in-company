@@ -1,56 +1,57 @@
-<h2 mat-dialog-title>{{ data ? 'تعديل موظف' : 'إضافة موظف' }}</h2>
+<div dir="rtl">
+    <h2 mat-dialog-title>{{ data ? 'تعديل موظف' : 'إضافة موظف' }}</h2>
+    <form [formGroup]="form" (ngSubmit)="save()" mat-dialog-content>
 
-<form [formGroup]="form" (ngSubmit)="save()" mat-dialog-content>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>الاسم الكامل</mat-label>
+            <input matInput formControlName="fullName" />
+            @if (form.get('fullName')?.hasError('required')) {
+            <mat-error>الاسم الكامل يجب أن يكون 3 أحرف على الأقل</mat-error>
+            }
+        </mat-form-field>
 
-    <mat-form-field class="w-100">
-        <mat-label>الاسم الكامل</mat-label>
-        <input matInput formControlName="fullName" />
-        @if (form.get('fullName')?.hasError('required')) {
-        <mat-error>الاسم الكامل يجب أن يكون 3 أحرف على الأقل</mat-error>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>البريد الإلكتروني</mat-label>
+            <input matInput formControlName="email" />
+            @if (!form.get('email')?.hasError('email')) {
+
+            <mat-error>مطلوب</mat-error>
+            }
+            @if (form.get('email')?.hasError('email')) {
+            <mat-error>البريد الإلكتروني غير صالح</mat-error>
+            }
+        </mat-form-field>
+
+        <!-- تاريخ الانضمام -->
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>تاريخ الانضمام</mat-label>
+            <input matInput type="date" formControlName="joiningDate" />
+        </mat-form-field>
+
+        <!-- القسم (PrimeNG Dropdown) -->
+        <p-dropdown class="w-100 mb-3 h-3rem" showClear="true" [options]="departments" editable="true"
+            optionLabel="name" optionValue="id" placeholder="اختر القسم" formControlName="departmentId">
+        </p-dropdown>
+        @if (form.get('departmentId')?.invalid && form.touched) {
+
+        <div class="text-danger">
+            القسم مطلوب
+        </div>
         }
-    </mat-form-field>
 
-    <mat-form-field class="w-100">
-        <mat-label>البريد الإلكتروني</mat-label>
-        <input matInput formControlName="email" />
-        @if (!form.get('email')?.hasError('email')) {
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>الحالة</mat-label>
+            <mat-select formControlName="status">
+                <mat-option value="active">نشط</mat-option>
+                <mat-option value="inactive">غير نشط</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-        <mat-error>مطلوب</mat-error>
-        }
-        @if (form.get('email')?.hasError('email')) {
-        <mat-error>البريد الإلكتروني غير صالح</mat-error>
-        }
-    </mat-form-field>
-
-    <!-- تاريخ الانضمام -->
-    <mat-form-field class="w-100">
-        <mat-label>تاريخ الانضمام</mat-label>
-        <input matInput type="date" formControlName="joiningDate" />
-    </mat-form-field>
-
-    <!-- القسم (PrimeNG Dropdown) -->
-    <p-dropdown class="w-100 mb-3" [options]="departments" editable="true" optionLabel="name" optionValue="id" placeholder="اختر القسم"
-        formControlName="departmentId">
-    </p-dropdown>
-    @if (form.get('departmentId')?.invalid && form.touched) {
-
-    <div class="text-danger">
-        القسم مطلوب
-    </div>
-    }
-
-    <mat-form-field class="w-100">
-        <mat-label>الحالة</mat-label>
-        <mat-select formControlName="status">
-            <mat-option value="active">نشط</mat-option>
-            <mat-option value="inactive">غير نشط</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <div mat-dialog-actions align="end">
-        <button mat-button type="button" (click)="dialog.close()">إلغاء</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-            حفظ
-        </button>
-    </div>
-</form>
+        <div mat-dialog-actions align="end">
+            <button mat-button type="button" (click)="dialog.close()">إلغاء</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                حفظ
+            </button>
+        </div>
+    </form>
+</div>
