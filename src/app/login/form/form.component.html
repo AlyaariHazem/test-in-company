@@ -1,60 +1,39 @@
 <!-- form.component.html -->
 <div class="form">
-    <form
-      dir="rtl"
-      novalidate
-      [formGroup]="form"
-      (ngSubmit)="login()"
-      class="form-inline"
-    >
-      <h2 style="margin-right:2rem;">HR Management System</h2>
-  
-      <!-- username -->
-      <mat-form-field appearance="outline" class="input2">
-        <mat-label>إدخل اسم المستخدم</mat-label>
-        <input
-          matInput
-          formControlName="username"
-          autocomplete="username"
-          placeholder="اسم المستخدم"
-        />
-        <mat-error *ngIf="form.get('username')?.hasError('required')">
-          يجب إدخال اسم المستخدم
-        </mat-error>
-        <mat-error *ngIf="form.get('username')?.hasError('minlength')">
-          اسم المستخدم يجب أن يكون 3 أحرف على الأقل
-        </mat-error>
-      </mat-form-field>
-  
-      <!-- password -->
-      <mat-form-field appearance="outline" class="input2">
-        <mat-label>كلمة السر</mat-label>
-        <input
-          matInput
-          type="password"
-          formControlName="pass"
-          autocomplete="current-password"
-          placeholder="كلمة السر"
-        />
-        <mat-error *ngIf="form.get('pass')?.hasError('required')">
-          كلمة السر مطلوبة
-        </mat-error>
-        <mat-error *ngIf="form.get('pass')?.hasError('minlength')">
-          يجب أن تكون كلمة السر أكبر من 3 أحرف
-        </mat-error>
-      </mat-form-field>
-  
-      <br />
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        class="btn btn-custom mb-2 buttonSend"
-      >
-        تسجيل دخول
-      </button>
-  
-      <a class="forgot-password">هل نسيت كلمة السر؟</a>
-    </form>
-  </div>
-  
+  <form dir="rtl" novalidate [formGroup]="form" (ngSubmit)="login()" class="form-inline">
+    <h2 class="text-center text-black-alpha-90">نظام إدارة الموارد البشرية</h2>
+
+    <!-- username -->
+    <mat-form-field appearance="outline" class="input2">
+      <mat-label>إدخل اسم المستخدم</mat-label>
+      <input matInput formControlName="username" autocomplete="username" placeholder="اسم المستخدم" />
+      @if (form.get('username')?.hasError('required')) {
+      <mat-error>اسم المستخدم مطلوب</mat-error>
+      }
+      @if (form.get('username')?.hasError('minlength')) {
+      <mat-error>اسم المستخدم يجب أن يكون 3 أحرف على الأقل</mat-error>
+      }
+    </mat-form-field>
+
+    <!-- password -->
+    <mat-form-field appearance="outline" class="input2">
+      <mat-label>كلمة السر</mat-label>
+      <input matInput type="password" formControlName="pass" autocomplete="current-password" placeholder="كلمة السر" />
+      @if (form.get('pass')?.hasError('required')) {
+
+      <mat-error>
+        كلمة السر مطلوبة
+      </mat-error>
+      }
+      @if (form.get('pass')?.hasError('minlength')) {
+      <mat-error>
+        كلمة السر يجب أن تكون 3 أحرف على الأقل
+      </mat-error>
+      }
+    </mat-form-field>
+    <a routerlink="#" class="text-100 text-primary relative">هل نسيت كلمة السر؟</a>
+    <button mat-raised-button color="primary" type="submit" class="btn btn-custom mb-2 buttonSend">
+      تسجيل دخول
+    </button>
+  </form>
+</div>
