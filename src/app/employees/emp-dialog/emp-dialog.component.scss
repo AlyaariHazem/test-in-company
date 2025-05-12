@@ -1,0 +1,10 @@
+button:hover{
+    cursor: pointer;
+}
+.radius{
+    border-radius: 6px;
+    padding: 5px 0 3px 0;
+}
+*:not(button){
+    width: 100%;
+}

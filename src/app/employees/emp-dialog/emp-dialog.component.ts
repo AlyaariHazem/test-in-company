@@ -23,7 +23,7 @@ import { DropdownModule } from 'primeng/dropdown';
     MatSelectModule
   ],
   templateUrl: './emp-dialog.component.html',
-  styles: [`.w-100{width:100%}`]
+  styleUrl:'./emp-dialog.component.scss'
 })
 export class EmployeeDialogComponent {
   private fb = inject(FormBuilder);

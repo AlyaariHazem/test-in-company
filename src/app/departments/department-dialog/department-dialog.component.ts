@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
     MatInputModule
   ],
   templateUrl: './department-dialog.component.html',
-  styles: [`.w-100{width:100%}`]
+  styleUrl:'./department-dialog.component.scss'
 })
 export class DepartmentDialogComponent {
   private fb = inject(FormBuilder);
